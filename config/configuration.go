@@ -14,7 +14,6 @@ type Configuration struct {
 }
 
 func loadConfig() Configuration {
-	fmt.Println(os.Getenv("PORT"))
 	port, err := strconv.Atoi(os.Getenv("PORT"))
 
 	if err != nil {
@@ -27,7 +26,6 @@ func loadConfig() Configuration {
 		LogFilePath: os.Getenv("LOGFILE_PATH"),
 	}
 
-	fmt.Println(configuration)
 	return configuration
 }
 
