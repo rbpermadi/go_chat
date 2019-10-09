@@ -38,8 +38,6 @@ Make a copy from [env.sample](env.example) and name it `.env`.
 
 > _Important Note : **NEVER EVER** delete [env.sample](env.example) file from your local machine
 
-To kill the server you just need to hold `Ctrl + C`
-
 ## Running Service
 
 Run **go_chat** in your local machine
@@ -48,6 +46,7 @@ Run **go_chat** in your local machine
 > cd go_chat
 > make run
 ```
+To kill the server you just need to hold `Ctrl + C`
 
 ### Rest Services
 
@@ -56,7 +55,7 @@ Run **go_chat** in your local machine
 
 ### Web Socket
 
-To initiate websocket connection, call `ws:localhost:7171/chat`
+To initiate websocket connection, call `ws://localhost:7171/chat`
 
 ### Sample Access
 
