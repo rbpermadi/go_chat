@@ -34,6 +34,7 @@ func init() {
 func main() {
 
 	server := chat.NewServer()
+	go server.Listen()
 
 	router := httprouter.New()
 	router.GET("/messages", func(w http.ResponseWriter, _ *http.Request, _ httprouter.Params) {
@@ -53,10 +54,19 @@ func main() {
 		}
 
 		server.Messages = append(server.Messages, &messageObject)
+		server.SendAll(&messageObject)
 
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(201)
 		json.NewEncoder(w).Encode(messageObject)
+	})
+
+	router.GET("/chat", func(w http.ResponseWriter, r *http.Request, _ httprouter.Params) {
+		server.HandleChat(w, r)
+	})
+
+	router.GET("/", func(w http.ResponseWriter, r *http.Request, _ httprouter.Params) {
+		http.ServeFile(w, r, "index.html")
 	})
 
 	co := cors.New(cors.Options{
