@@ -47,7 +47,7 @@ func main() {
 
 		err := json.NewDecoder(r.Body).Decode(&messageObject)
 
-		messageObject.Timestamp = time.Now()
+		messageObject.CreatedAt = time.Now()
 		if err != nil {
 			log.Println("Error while reading JSON from websocket ", err.Error())
 		}
